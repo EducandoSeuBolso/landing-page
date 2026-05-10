@@ -1,83 +1,136 @@
-import { Instagram, Globe, Mail } from "lucide-react";
+import { ExternalLink, Phone, MapPin } from "lucide-react";
 import bolsitoLogo from "@/assets/bolsito.png";
 
 const Footer = () => {
-    return (
-        <footer className="bg-foreground text-primary-foreground py-16">
-            <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-4 gap-12 mb-12">
-                    {/* Brand */}
-                    <div className="md:col-span-2">
-                        <div className="flex items-center gap-2 mb-4">
-                            <img src={bolsitoLogo} alt="Bolsito" className="w-10 h-10 object-contain" />
-                            <span className="font-bold text-lg">Educando Seu Bolso</span>
-                        </div>
-                        <p className="text-primary-foreground/70 mb-6 max-w-sm">
-                            Transformando a relação das pessoas com o dinheiro através de
-                            educação financeira de qualidade e consultoria personalizada.
-                        </p>
-                        <div className="flex gap-4">
-                            <a
-                                href="https://www.instagram.com/educandoseubolso/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
-                            >
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="https://educandoseubolso.blog.br/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
-                            >
-                                <Globe className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="mailto:contato@educandoseubolso.com.br"
-                                className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
-                            >
-                                <Mail className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
+  return (
+    <footer className="border-t border-border bg-card">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4">
 
-                    {/* Links */}
-                    <div>
-                        <h4 className="font-semibold mb-4">Links Rápidos</h4>
-                        <ul className="space-y-3 text-primary-foreground/70">
-                            <li><a href="#inicio" className="hover:text-primary-foreground transition-colors">Início</a></li>
-                            <li><a href="#servicos" className="hover:text-primary-foreground transition-colors">Serviços</a></li>
-                            <li><a href="#sobre" className="hover:text-primary-foreground transition-colors">Sobre Nós</a></li>
-                            <li><a href="#contato" className="hover:text-primary-foreground transition-colors">Contato</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Services */}
-                    <div>
-                        <h4 className="font-semibold mb-4">Serviços</h4>
-                        <ul className="space-y-3 text-primary-foreground/70">
-                            <li><a href="#servicos" className="hover:text-primary-foreground transition-colors">Planejamento Financeiro</a></li>
-                            <li><a href="#servicos" className="hover:text-primary-foreground transition-colors">Controle de Gastos</a></li>
-                            <li><a href="#servicos" className="hover:text-primary-foreground transition-colors">Investimentos</a></li>
-                            <li><a href="#servicos" className="hover:text-primary-foreground transition-colors">Consultoria para Casais</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                {/* Bottom */}
-                <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-primary-foreground/60 text-sm">
-                        © 2026 Educando Seu Bolso. Todos os direitos reservados.
-                    </p>
-                    <div className="flex gap-6 text-sm text-primary-foreground/60">
-                        <a href="#" className="hover:text-primary-foreground transition-colors">Política de Privacidade</a>
-                        <a href="#" className="hover:text-primary-foreground transition-colors">Termos de Uso</a>
-                    </div>
-                </div>
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <img src={bolsitoLogo} alt="Educando seu Bolso" className="h-7 w-7 object-contain" />
+              <span className="font-semibold text-foreground text-sm">Educando seu Bolso</span>
             </div>
-        </footer>
-    );
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Educação financeira acessível e de qualidade para todos os brasileiros.
+            </p>
+            <a
+              href="https://wa.me/5531999189537"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Phone className="h-3 w-3 shrink-0" />
+              (31) 99918-9537
+            </a>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Educando+Seu+Bolso+Alameda+das+Falcatas+922+São+Luiz+Belo+Horizonte+MG"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <MapPin className="h-3 w-3 shrink-0" />
+              Alameda das Falcatas, 922 — São Luiz, Belo Horizonte - MG
+            </a>
+          </div>
+
+          {/* Serviços */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-3">Serviços</h4>
+            <ul className="flex flex-col gap-2">
+              {[
+                { label: "Planejamento Financeiro", href: "#servicos" },
+                { label: "Controle de Gastos",      href: "#servicos" },
+                { label: "Investimentos",            href: "#servicos" },
+                { label: "Análise de Dívidas",       href: "#servicos" },
+                { label: "Finanças para Casais",     href: "#servicos" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Empresa */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-3">Empresa</h4>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <a href="#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                  Sobre nós
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://minhaagendavirtual.com.br/educandoseubolso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                >
+                  Consultoria
+                  <ExternalLink className="h-2.5 w-2.5" />
+                </a>
+              </li>
+              <li>
+                <a href="#contato" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Conecte-se */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-3">Conecte-se</h4>
+            <ul className="flex flex-col gap-2">
+              {[
+                { label: "WhatsApp",  href: "https://wa.me/5531999189537" },
+                { label: "Instagram", href: "https://www.instagram.com/educandoseubolso/" },
+                { label: "YouTube",   href: "https://www.youtube.com/educandoseubolso" },
+                { label: "Facebook",  href: "https://www.facebook.com/people/Blog-Educando-Seu-Bolso/61554308285348/" },
+                { label: "LinkedIn",  href: "https://www.linkedin.com/company/educandoseubolso" },
+                { label: "Blog",      href: "https://educandoseubolso.blog.br/" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  >
+                    {item.label}
+                    <ExternalLink className="h-2.5 w-2.5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground">
+            &copy; 2026{" "}
+            <span className="gradient-text-blue-orange font-medium">Educando seu Bolso</span>
+            . Todos os direitos reservados.
+          </p>
+          <div className="flex gap-4">
+            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              Privacidade
+            </a>
+            <a href="#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              Sobre
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

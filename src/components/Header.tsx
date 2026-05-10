@@ -1,102 +1,108 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import bolsitoLogo from "@/assets/bolsito.png";
 
+const navLinks = [
+  { label: "Início",    href: "#inicio" },
+  { label: "Serviços",  href: "#servicos" },
+  { label: "Sobre",     href: "#sobre" },
+  { label: "Contato",   href: "#contato" },
+];
+
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navLinks = [
-    { label: "Início", href: "#inicio" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Contato", href: "#contato" },
-  ];
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/85 backdrop-blur-xl shadow-soft py-3" : "bg-transparent py-5"
-        }`}
+    <nav
+      aria-label="Navegação principal"
+      className="fixed top-3 sm:top-4 left-1/2 z-50 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-5xl pointer-events-none"
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-3">
-          <img src={bolsitoLogo} alt="Bolsito" className="w-10 h-10 object-contain" />
-          <span
-            className={`font-semibold text-lg tracking-tight ${isScrolled ? "text-foreground" : "text-white"
-              }`}
+      {/* ── Main bar ── */}
+      <div className="glass rounded-2xl border border-border/60 px-4 py-2 shadow-lg shadow-primary/5 pointer-events-auto">
+        <div className="flex items-center justify-between gap-3">
+
+          {/* Logo */}
+          <a
+            href="#inicio"
+            className="flex items-center gap-2.5 shrink-0 group"
+            aria-label="Ir para início"
           >
-            Educando Seu Bolso
-          </span>
-        </a>
+            <img
+              src={bolsitoLogo}
+              alt="Educando seu Bolso"
+              className="h-8 w-8 object-contain transition-transform group-hover:scale-105"
+            />
+            <span className="font-semibold text-foreground text-sm hidden lg:block">
+              Educando seu Bolso
+            </span>
+          </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-semibold transition-colors hover:text-accent ${isScrolled ? "text-foreground" : "text-white"
-                }`}
-            >
-              {link.label}
-            </a>
-          ))}
-          <Button
-            variant={isScrolled ? "outline" : "secondary"}
-            size="sm"
-            className={`rounded-full px-5 font-semibold ${isScrolled
-                ? "border-primary/40 text-primary hover:bg-primary/5"
-                : "bg-white/10 text-white border border-white/40 hover:bg-white/20"
-              }`}
-          >
-            <a href="https://minhaagendavirtual.com.br/educandoseubolso" target="_blank" rel="noopener noreferrer">
-              Agendar Consulta
-            </a>
-          </Button>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button className="md:hidden p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? (
-            <X className={isScrolled ? "text-foreground" : "text-white"} size={26} />
-          ) : (
-            <Menu className={isScrolled ? "text-foreground" : "text-white"} size={26} />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <nav className="md:hidden absolute top-full left-0 right-0 glass-effect shadow-card p-4 animate-fade-up">
-          <div className="flex flex-col gap-4">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="font-medium text-foreground hover:text-primary transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-3 py-1.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
               >
                 {link.label}
               </a>
             ))}
-            <Button variant="default" className="mt-2 rounded-full">
-              <a href="https://minhaagendavirtual.com.br/educandoseubolso" target="_blank" rel="noopener noreferrer">
-                Agendar Consulta
-              </a>
-            </Button>
           </div>
-        </nav>
+
+          {/* CTA + mobile toggle */}
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href="https://minhaagendavirtual.com.br/educandoseubolso"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+              style={{ background: "linear-gradient(135deg,#0E87C6,#FF8A00)" }}
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              Agendar Consulta
+            </a>
+
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-1.5 rounded-lg hover:bg-secondary transition-colors text-muted-foreground"
+              aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Mobile dropdown ── */}
+      {mobileOpen && (
+        <div className="md:hidden mt-2 glass rounded-2xl border border-border/60 p-3 shadow-lg shadow-primary/5 animate-fade-up pointer-events-auto">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="https://minhaagendavirtual.com.br/educandoseubolso"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 px-3 py-2.5 text-sm rounded-lg font-semibold text-white flex items-center gap-2"
+              style={{ background: "linear-gradient(135deg,#0E87C6,#FF8A00)" }}
+            >
+              <MessageCircle className="h-4 w-4" />
+              Agendar Consulta
+            </a>
+          </div>
+        </div>
       )}
-    </header>
+    </nav>
   );
 };
 
