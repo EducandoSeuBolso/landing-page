@@ -73,3 +73,8 @@ Os tokens OKLCH em `src/index.css` já são idênticos aos de `bolsito-frontend/
 - Auditoria Playwright (breakpoints acima) com screenshots antes/depois.
 - `pnpm lint` e `pnpm build` limpos.
 - Verificação manual do fluxo de navegação (navbar de `/diagnostico` → home → seções).
+
+## Adendo (2026-07-08, mid-execução — aprovado pelo usuário)
+
+1. **Navbar maior:** o usuário reportou a navbar pequena demais; escala tipográfica e de espaçamento sobe um degrau (barra, links, logo, CTA). Estilo glass e comportamento inalterados.
+2. **Seção-teaser do diagnóstico na home:** nova seção `#diagnostico` entre Serviços e Sobre — eyebrow, título com gradiente, "3 minutos · gratuito", chips dos 5 pilares avaliados e CTA laranja → `/diagnostico`. Decisão: NÃO embutir o fluxo inline na home (página longa demais, funil imensurável); `/diagnostico` segue página dedicada.
