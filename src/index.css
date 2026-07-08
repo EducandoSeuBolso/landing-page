@@ -132,9 +132,16 @@
     background-clip: text;
   }
 
-  /* Blue → Orange diagonal — brand gradient (matches bolsito-frontend) */
+  /* Gradiente de texto: azul (135deg) — paridade bolsito-frontend */
   .gradient-text-blue-orange {
-    background: linear-gradient(135deg, #0e87c6 0%, #2ea3d9 40%, #ff8a00 100%);
+    background: linear-gradient(135deg, #064e72 0%, #0e87c6 45%, #2ea3d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-orange-blue {
+    background: linear-gradient(135deg, #064e72 0%, #0e87c6 50%, #2ea3d9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -145,8 +152,9 @@
   .bg-gradient-card    { background: var(--gradient-card); }
   .bg-gradient-accent  { background: var(--gradient-accent); }
 
+  /* Fundo sólido laranja para botões — paridade bolsito-frontend */
   .gradient-bg-blue-orange {
-    background: linear-gradient(135deg, #0e87c6 0%, #2ea3d9 28%, #ffa31a 72%, #ff8a00 100%);
+    background: #FF8A00;
   }
 
   /* Mesh — blue top-left, orange bottom-right (matches bolsito-frontend home) */

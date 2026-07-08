@@ -68,8 +68,7 @@ const Header = () => {
               href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
-              style={{ background: "linear-gradient(135deg,#0E87C6,#FF8A00)" }}
+              className="gradient-bg-blue-orange hidden md:flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
             >
               <MessageCircle className="h-3.5 w-3.5" />
               Agendar Consulta
@@ -117,8 +116,7 @@ const Header = () => {
               href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 px-3 py-2.5 text-sm rounded-lg font-semibold text-white flex items-center gap-2"
-              style={{ background: "linear-gradient(135deg,#0E87C6,#FF8A00)" }}
+              className="gradient-bg-blue-orange mt-1 px-3 py-2.5 text-sm rounded-lg font-semibold text-white flex items-center gap-2"
             >
               <MessageCircle className="h-4 w-4" />
               Agendar Consulta
