@@ -62,6 +62,11 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Empresa</h4>
             <ul className="flex flex-col gap-2">
               <li>
+                <Link to="/diagnostico" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                  Diagnóstico financeiro
+                </Link>
+              </li>
+              <li>
                 <Link to="/#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                   Sobre nós
                 </Link>

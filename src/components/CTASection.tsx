@@ -1,4 +1,5 @@
-import { ArrowRight, MessageCircle, Calendar, Check, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Calendar, Check, Sparkles, Stethoscope } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const highlights = [
   "Planejamento financeiro personalizado",
@@ -96,6 +97,14 @@ const CTASection = () => {
                   <MessageCircle className="h-4 w-4" />
                   Falar no WhatsApp
                 </a>
+
+                <Link
+                  to="/diagnostico"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 mt-3 rounded-xl bg-white/10 border border-white/20 text-white text-sm font-medium hover:bg-white/15 transition-colors"
+                >
+                  <Stethoscope className="h-4 w-4" />
+                  Ainda em dúvida? Faça o diagnóstico gratuito
+                </Link>
 
                 <p className="text-white/40 text-xs text-center mt-4">
                   Atendimento 100% online. Resposta em até 24h.

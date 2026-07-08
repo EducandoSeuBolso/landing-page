@@ -1,4 +1,5 @@
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
@@ -67,14 +68,10 @@ const HeroSection = () => {
             asChild
             className="gradient-bg-blue-orange rounded-xl px-8 h-14 text-base font-semibold text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border-0"
           >
-            <a
-              href="https://minhaagendavirtual.com.br/educandoseubolso"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Quero Minha Consultoria
+            <Link to="/diagnostico">
+              Fazer diagnóstico gratuito
               <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            </Link>
           </Button>
 
           <Button
@@ -84,12 +81,12 @@ const HeroSection = () => {
             className="rounded-xl px-8 h-14 text-base font-semibold border-2 border-border hover:bg-card hover:border-primary/30 hover:-translate-y-1 transition-all duration-300"
           >
             <a
-              href="http://wa.me/5531999189537"
+              href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="mr-2 h-4 w-4 text-accent" />
-              Falar no WhatsApp
+              <Calendar className="mr-2 h-4 w-4 text-accent" />
+              Agendar consulta
             </a>
           </Button>
         </div>
