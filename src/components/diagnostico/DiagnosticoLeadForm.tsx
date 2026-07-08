@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -55,11 +56,19 @@ export function DiagnosticoLeadForm({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { name: defaultName, email: "", phone: "", consent: false },
   });
+
+  // react-hook-form captures defaultValues only on mount; the form lives above
+  // the Radix Dialog, so `defaultName` may change (user typed their name after
+  // this component mounted). Re-seed the fields each time the dialog opens.
+  useEffect(() => {
+    if (open) reset({ name: defaultName, email: "", phone: "", consent: false });
+  }, [open, defaultName, reset]);
 
   async function submit(values: FormValues) {
     await onSubmitLead(values);
