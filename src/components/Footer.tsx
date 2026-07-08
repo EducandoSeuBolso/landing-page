@@ -1,4 +1,5 @@
 import { ExternalLink, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import bolsitoLogo from "@/assets/bolsito.png";
 
 const Footer = () => {
@@ -41,16 +42,16 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Serviços</h4>
             <ul className="flex flex-col gap-2">
               {[
-                { label: "Planejamento Financeiro", href: "#servicos" },
-                { label: "Controle de Gastos",      href: "#servicos" },
-                { label: "Investimentos",            href: "#servicos" },
-                { label: "Análise de Dívidas",       href: "#servicos" },
-                { label: "Finanças para Casais",     href: "#servicos" },
+                { label: "Planejamento Financeiro", to: "/#servicos" },
+                { label: "Controle de Gastos",      to: "/#servicos" },
+                { label: "Investimentos",            to: "/#servicos" },
+                { label: "Análise de Dívidas",       to: "/#servicos" },
+                { label: "Finanças para Casais",     to: "/#servicos" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                  <Link to={item.to} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -61,9 +62,9 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Empresa</h4>
             <ul className="flex flex-col gap-2">
               <li>
-                <a href="#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                   Sobre nós
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -77,9 +78,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#contato" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/#contato" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                   Contato
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -123,9 +124,9 @@ const Footer = () => {
             <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Privacidade
             </a>
-            <a href="#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Sobre
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "@/pages/index";
 import Diagnostico from "@/pages/diagnostico";
 import NotFound from "@/pages/notFound";
+import ScrollToHash from "@/components/ScrollToHash";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/diagnostico" element={<Diagnostico />} />

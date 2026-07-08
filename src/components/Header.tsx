@@ -3,13 +3,13 @@ import { Menu, X, MessageCircle, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
 import bolsitoLogo from "@/assets/bolsito.png";
 
-// Hash links scroll within the single-page landing; `to` links navigate routes.
+// Âncoras absolutas (/#secao) funcionam de qualquer rota via ScrollToHash.
 const navLinks = [
-  { label: "Início",      href: "#inicio" },
-  { label: "Serviços",    href: "#servicos" },
-  { label: "Sobre",       href: "#sobre" },
-  { label: "Diagnóstico", to: "/diagnostico" },
-  { label: "Contato",     href: "#contato" },
+  { label: "Início",      to: "/#inicio" },
+  { label: "Serviços",    to: "/#servicos" },
+  { label: "Sobre",       to: "/#sobre" },
+  { label: "Diagnóstico", to: "/diagnostico", highlight: true },
+  { label: "Contato",     to: "/#contato" },
 ];
 
 const navLinkClass =
@@ -28,8 +28,8 @@ const Header = () => {
         <div className="flex items-center justify-between gap-3">
 
           {/* Logo */}
-          <a
-            href="#inicio"
+          <Link
+            to="/#inicio"
             className="flex items-center gap-2.5 shrink-0 group"
             aria-label="Ir para início"
           >
@@ -41,12 +41,12 @@ const Header = () => {
             <span className="font-semibold text-foreground text-sm hidden lg:block">
               Educando seu Bolso
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) =>
-              link.to ? (
+              link.highlight ? (
                 <Link
                   key={link.to}
                   to={link.to}
@@ -55,9 +55,9 @@ const Header = () => {
                   {link.label}
                 </Link>
               ) : (
-                <a key={link.href} href={link.href} className={navLinkClass}>
+                <Link key={link.to} to={link.to} className={navLinkClass}>
                   {link.label}
-                </a>
+                </Link>
               ),
             )}
           </div>
@@ -91,7 +91,7 @@ const Header = () => {
         <div className="md:hidden mt-2 glass rounded-2xl border border-border/60 p-3 shadow-lg shadow-primary/5 animate-fade-up pointer-events-auto">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) =>
-              link.to ? (
+              link.highlight ? (
                 <Link
                   key={link.to}
                   to={link.to}
@@ -102,14 +102,14 @@ const Header = () => {
                   {link.label}
                 </Link>
               ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
+                <Link
+                  key={link.to}
+                  to={link.to}
                   onClick={() => setMobileOpen(false)}
                   className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                 >
                   {link.label}
-                </a>
+                </Link>
               ),
             )}
             <a
