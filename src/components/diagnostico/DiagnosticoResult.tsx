@@ -94,7 +94,10 @@ export function DiagnosticoResult({
 
       <div className={`mt-7 rounded-2xl border p-6 ${theme.box}`}>
         <p className="mb-4 text-sm leading-relaxed">{content.cta}</p>
-        <Button onClick={onScheduleClick} className="w-full sm:w-auto">
+        <Button
+          onClick={onScheduleClick}
+          className="gradient-bg-blue-orange h-12 w-full rounded-xl border-0 px-6 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl sm:w-auto"
+        >
           Agendar minha consultoria
         </Button>
       </div>

@@ -116,7 +116,11 @@ export function DiagnosticoLeadForm({
           {errors.consent && (
             <p className="-mt-2 text-xs text-destructive">{errors.consent.message}</p>
           )}
-          <Button type="submit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="gradient-bg-blue-orange h-12 rounded-xl border-0 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl disabled:hover:translate-y-0"
+          >
             {isSubmitting ? "Enviando..." : "Ir para o WhatsApp"}
           </Button>
         </form>

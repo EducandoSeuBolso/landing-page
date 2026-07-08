@@ -90,7 +90,11 @@ export function DiagnosticoQuestion({
           <ArrowLeft className="h-4 w-4" />
           Voltar
         </Button>
-        <Button onClick={onNext} disabled={selected === undefined}>
+        <Button
+          onClick={onNext}
+          disabled={selected === undefined}
+          className="rounded-xl px-6 shadow-sm transition-all duration-200 hover:shadow-md"
+        >
           {isLast ? "Ver resultado" : "Próxima"}
           <ArrowRight className="h-4 w-4" />
         </Button>

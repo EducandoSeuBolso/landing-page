@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import Header from "@/components/Header";
 import { DiagnosticoIntro } from "@/components/diagnostico/DiagnosticoIntro";
 import { DiagnosticoQuestion } from "@/components/diagnostico/DiagnosticoQuestion";
 import { DiagnosticoResult } from "@/components/diagnostico/DiagnosticoResult";
@@ -69,9 +70,22 @@ export default function Diagnostico() {
   }
 
   return (
-    <main className="min-h-screen bg-background px-4 py-10 md:py-16">
-      <div className="mx-auto w-full max-w-3xl">
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-card md:p-10">
+    <>
+      <Header />
+      <main className="relative min-h-screen overflow-hidden bg-background px-4 pb-20 pt-28 md:pt-32">
+        {/* ── Marketing chrome — matches HeroSection / bolsito-frontend ── */}
+        <div className="pointer-events-none absolute inset-0 mesh-gradient" />
+        <div
+          className="pointer-events-none absolute left-1/4 top-0 h-[420px] w-[520px] -translate-x-1/2 rounded-full opacity-50 blur-[140px]"
+          style={{ background: "rgba(14,135,198,0.20)" }}
+        />
+        <div
+          className="pointer-events-none absolute bottom-10 right-1/4 h-[360px] w-[440px] rounded-full opacity-50 blur-[130px]"
+          style={{ background: "rgba(255,138,0,0.18)" }}
+        />
+
+        <div className="relative z-10 mx-auto w-full max-w-3xl">
+          <div className="rounded-3xl border border-border/70 bg-card/95 p-6 shadow-card backdrop-blur-sm md:p-10 animate-fade-up">
           {d.phase === "intro" && (
             <DiagnosticoIntro name={d.name} onNameChange={d.setName} onStart={d.start} />
           )}
@@ -100,13 +114,14 @@ export default function Diagnostico() {
         </div>
       </div>
 
-      <DiagnosticoLeadForm
-        open={leadOpen}
-        onOpenChange={setLeadOpen}
-        defaultName={d.name}
-        tier={d.results.tier}
-        onSubmitLead={handleLead}
-      />
-    </main>
+        <DiagnosticoLeadForm
+          open={leadOpen}
+          onOpenChange={setLeadOpen}
+          defaultName={d.name}
+          tier={d.results.tier}
+          onSubmitLead={handleLead}
+        />
+      </main>
+    </>
   );
 }

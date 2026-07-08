@@ -28,7 +28,7 @@ export function DiagnosticoIntro({ name, onNameChange, onStart }: Props) {
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
       {/* Texto */}
       <div>
-        <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-accent shadow-sm">
           <Sparkles className="h-4 w-4" />
           Educando Seu Bolso · Consultoria Financeira
         </div>
@@ -69,7 +69,10 @@ export function DiagnosticoIntro({ name, onNameChange, onStart }: Props) {
               onKeyDown={(e) => e.key === "Enter" && onStart()}
               aria-label="Seu primeiro nome"
             />
-            <Button onClick={onStart} className="shrink-0">
+            <Button
+              onClick={onStart}
+              className="gradient-bg-blue-orange h-11 shrink-0 rounded-xl border-0 px-6 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+            >
               Começar diagnóstico
               <ArrowRight className="h-4 w-4" />
             </Button>

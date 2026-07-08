@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Stethoscope } from "lucide-react";
+import { Link } from "react-router-dom";
 import bolsitoLogo from "@/assets/bolsito.png";
 
+// Hash links scroll within the single-page landing; `to` links navigate routes.
 const navLinks = [
-  { label: "Início",    href: "#inicio" },
-  { label: "Serviços",  href: "#servicos" },
-  { label: "Sobre",     href: "#sobre" },
-  { label: "Contato",   href: "#contato" },
+  { label: "Início",      href: "/inicio" },
+  { label: "Serviços",    href: "/servicos" },
+  { label: "Sobre",       href: "/sobre" },
+  { label: "Diagnóstico", to: "/diagnostico" },
+  { label: "Contato",     href: "/contato" },
 ];
+
+const navLinkClass =
+  "px-3 py-1.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,15 +45,22 @@ const Header = () => {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.to ? (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`${navLinkClass} inline-flex items-center gap-1.5 text-accent hover:text-accent`}
+                >
+                  <Stethoscope className="h-3.5 w-3.5" />
+                  {link.label}
+                </Link>
+              ) : (
+                <a key={link.href} href={link.href} className={navLinkClass}>
+                  {link.label}
+                </a>
+              ),
+            )}
           </div>
 
           {/* CTA + mobile toggle */}
@@ -79,16 +92,28 @@ const Header = () => {
       {mobileOpen && (
         <div className="md:hidden mt-2 glass rounded-2xl border border-border/60 p-3 shadow-lg shadow-primary/5 animate-fade-up pointer-events-auto">
           <div className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.to ? (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-3 py-2.5 text-sm rounded-lg font-medium text-accent hover:bg-secondary transition-all inline-flex items-center gap-2"
+                >
+                  <Stethoscope className="h-4 w-4" />
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
             <a
               href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
