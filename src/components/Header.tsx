@@ -5,11 +5,11 @@ import bolsitoLogo from "@/assets/bolsito.png";
 
 // Hash links scroll within the single-page landing; `to` links navigate routes.
 const navLinks = [
-  { label: "Início",      href: "/inicio" },
-  { label: "Serviços",    href: "/servicos" },
-  { label: "Sobre",       href: "/sobre" },
+  { label: "Início",      href: "#inicio" },
+  { label: "Serviços",    href: "#servicos" },
+  { label: "Sobre",       href: "#sobre" },
   { label: "Diagnóstico", to: "/diagnostico" },
-  { label: "Contato",     href: "/contato" },
+  { label: "Contato",     href: "#contato" },
 ];
 
 const navLinkClass =
@@ -52,7 +52,6 @@ const Header = () => {
                   to={link.to}
                   className={`${navLinkClass} inline-flex items-center gap-1.5 text-accent hover:text-accent`}
                 >
-                  <Stethoscope className="h-3.5 w-3.5" />
                   {link.label}
                 </Link>
               ) : (

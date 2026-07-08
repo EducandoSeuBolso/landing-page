@@ -37,15 +37,6 @@ const HeroSection = () => {
       {/* ── Content ── */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center pt-28 pb-20">
 
-        {/* Badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium mb-8 animate-fade-up shadow-card"
-          style={{ animationDelay: "0ms" }}
-        >
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          <span className="text-muted-foreground">Consultoria Financeira Pessoal</span>
-        </div>
-
         {/* H1 */}
         <h1
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-foreground leading-[1.05] mb-6 animate-fade-up"
@@ -101,13 +92,6 @@ const HeroSection = () => {
               Falar no WhatsApp
             </a>
           </Button>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-          <div className="w-1 h-2 rounded-full bg-muted-foreground/50" />
         </div>
       </div>
     </section>
