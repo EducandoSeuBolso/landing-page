@@ -13,7 +13,7 @@ const navLinks = [
 ];
 
 const navLinkClass =
-  "px-3 py-1.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200";
+  "px-4 py-2 text-base rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,10 +21,10 @@ const Header = () => {
   return (
     <nav
       aria-label="Navegação principal"
-      className="fixed top-3 sm:top-4 left-1/2 z-50 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-5xl pointer-events-none"
+      className="fixed top-3 sm:top-4 left-1/2 z-50 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-6xl pointer-events-none"
     >
       {/* ── Main bar ── */}
-      <div className="glass rounded-2xl border border-border/60 px-4 py-2 shadow-lg shadow-primary/5 pointer-events-auto">
+      <div className="glass rounded-2xl border border-border/60 px-5 py-3 shadow-lg shadow-primary/5 pointer-events-auto">
         <div className="flex items-center justify-between gap-3">
 
           {/* Logo */}
@@ -36,9 +36,9 @@ const Header = () => {
             <img
               src={bolsitoLogo}
               alt="Educando seu Bolso"
-              className="h-8 w-8 object-contain transition-transform group-hover:scale-105"
+              className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
             />
-            <span className="font-semibold text-foreground text-sm hidden lg:block">
+            <span className="font-semibold text-foreground text-base hidden lg:block">
               Educando seu Bolso
             </span>
           </Link>
@@ -68,19 +68,19 @@ const Header = () => {
               href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-bg-blue-orange hidden md:flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+              className="gradient-bg-blue-orange hidden md:flex items-center gap-1.5 px-4 py-2 text-base rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
             >
-              <MessageCircle className="h-3.5 w-3.5" />
+              <MessageCircle className="h-4 w-4" />
               Agendar Consulta
             </a>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-1.5 rounded-lg hover:bg-secondary transition-colors text-muted-foreground"
+              className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground"
               aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -96,7 +96,7 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2.5 text-sm rounded-lg font-medium text-accent hover:bg-secondary transition-all inline-flex items-center gap-2"
+                  className="px-3 py-3 text-base rounded-lg font-medium text-accent hover:bg-secondary transition-all inline-flex items-center gap-2"
                 >
                   <Stethoscope className="h-4 w-4" />
                   {link.label}
@@ -106,7 +106,7 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2.5 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+                  className="px-3 py-3 text-base rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                 >
                   {link.label}
                 </Link>
@@ -116,7 +116,7 @@ const Header = () => {
               href="https://minhaagendavirtual.com.br/educandoseubolso"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-bg-blue-orange mt-1 px-3 py-2.5 text-sm rounded-lg font-semibold text-white flex items-center gap-2"
+              className="gradient-bg-blue-orange mt-1 px-3 py-3 text-base rounded-lg font-semibold text-white flex items-center gap-2"
             >
               <MessageCircle className="h-4 w-4" />
               Agendar Consulta
