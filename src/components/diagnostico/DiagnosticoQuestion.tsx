@@ -85,7 +85,7 @@ export function DiagnosticoQuestion({
         <Button
           variant="ghost"
           onClick={onBack}
-          className={index === 0 ? "invisible" : ""}
+          className={`h-11 px-4 ${index === 0 ? "invisible" : ""}`}
         >
           <ArrowLeft className="h-4 w-4" />
           Voltar
@@ -93,7 +93,7 @@ export function DiagnosticoQuestion({
         <Button
           onClick={onNext}
           disabled={selected === undefined}
-          className="rounded-xl px-6 shadow-sm transition-all duration-200 hover:shadow-md"
+          className="h-11 rounded-xl px-6 shadow-sm transition-all duration-200 hover:shadow-md"
         >
           {isLast ? "Ver resultado" : "Próxima"}
           <ArrowRight className="h-4 w-4" />

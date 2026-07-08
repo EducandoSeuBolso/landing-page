@@ -84,8 +84,12 @@ export default function Diagnostico() {
           style={{ background: "rgba(255,138,0,0.18)" }}
         />
 
-        <div className="relative z-10 mx-auto w-full max-w-3xl">
-          <div className="rounded-3xl border border-border/70 bg-card/95 p-6 shadow-card backdrop-blur-sm md:p-10 animate-fade-up">
+        <div
+          className={`relative z-10 mx-auto w-full ${
+            d.phase === "question" ? "max-w-3xl" : "max-w-5xl"
+          }`}
+        >
+          <div className="rounded-3xl border border-border/70 bg-card/95 p-4 shadow-card backdrop-blur-sm sm:p-6 md:p-10 animate-fade-up">
           {d.phase === "intro" && (
             <DiagnosticoIntro name={d.name} onNameChange={d.setName} onStart={d.start} />
           )}
