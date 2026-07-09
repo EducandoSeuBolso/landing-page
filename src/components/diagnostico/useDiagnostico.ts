@@ -68,10 +68,15 @@ export function useDiagnostico() {
       if (q.conditionOn && answers[q.conditionOn.id] !== q.conditionOn.value)
         return;
       const v = answers[q.id];
-      if (typeof v !== "number") return;
-      total += v;
+      if (v === undefined) return;
+      // `value` é identidade da opção; a pontuação vem de `score` quando as
+      // duas divergem (ex.: q5 tem opções distintas que valem 0 pontos).
+      const opt = q.options?.find((o) => o.value === v);
+      const score = opt?.score ?? (typeof v === "number" ? v : undefined);
+      if (score === undefined) return;
+      total += score;
       if (q.dim in dimScores) {
-        dimScores[q.dim as keyof typeof dimScores] += v;
+        dimScores[q.dim as keyof typeof dimScores] += score;
       }
     });
     const tier: Tier = total <= 10 ? "verde" : total <= 20 ? "amarelo" : "vermelho";

@@ -9,8 +9,10 @@ export type Tier = 'verde' | 'amarelo' | 'vermelho';
 
 export interface Option {
   label: string;
+  /** Identidade única da opção dentro da pergunta (o que fica em answers). */
   value: number | string;
-  tag?: string;
+  /** Pontuação quando difere de `value` — permite opções distintas com score igual. */
+  score?: number;
 }
 
 export interface Question {
@@ -51,10 +53,10 @@ export const questions: Question[] = [
     id: 'q5', dim: 'modulador', type: 'choice',
     text: 'Você sente que precisa de ajuda externa para sua vida financeira hoje? Se sim, qual o principal motivo?',
     options: [
-      { label: 'Não sinto necessidade de ajuda no momento', value: 0, tag: 'nenhuma' },
-      { label: 'Sim, para aprender a investir e multiplicar patrimônio', value: 0, tag: 'investir' },
-      { label: 'Sim, para organização financeira e planejamento', value: 2, tag: 'organizar' },
-      { label: 'Sim, para sair de dívidas e renegociações urgentes', value: 4, tag: 'dividas' },
+      { label: 'Não sinto necessidade de ajuda no momento', value: 'nenhuma', score: 0 },
+      { label: 'Sim, para aprender a investir e multiplicar patrimônio', value: 'investir', score: 0 },
+      { label: 'Sim, para organização financeira e planejamento', value: 'organizar', score: 2 },
+      { label: 'Sim, para sair de dívidas e renegociações urgentes', value: 'dividas', score: 4 },
     ],
   },
   {

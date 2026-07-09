@@ -1,40 +1,31 @@
 import { AlertTriangle, CheckCircle2, Siren } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DIM_MAX, tierContent, type Tier } from "./diagnostico-data";
+import { tierContent, type Tier } from "./diagnostico-data";
 import type { DiagnosticoResults } from "./useDiagnostico";
 
 const tierTheme: Record<
   Tier,
-  { icon: typeof Siren; color: string; badge: string; bar: string; box: string }
+  { icon: typeof Siren; color: string; badge: string; box: string }
 > = {
   vermelho: {
     icon: Siren,
     color: "text-[#C1543F]",
     badge: "border-[#C1543F]/40 text-[#C1543F] bg-[#C1543F]/8",
-    bar: "bg-[#C1543F]",
     box: "border-[#C1543F]/25 bg-[#C1543F]/5",
   },
   amarelo: {
     icon: AlertTriangle,
     color: "text-[#C79A3A]",
     badge: "border-[#C79A3A]/40 text-[#B0842B] bg-[#C79A3A]/10",
-    bar: "bg-[#D9A63B]",
     box: "border-[#C79A3A]/25 bg-[#C79A3A]/8",
   },
   verde: {
     icon: CheckCircle2,
     color: "text-[#3E8B5B]",
     badge: "border-[#4C9A6A]/40 text-[#3E8B5B] bg-[#4C9A6A]/10",
-    bar: "bg-[#4C9A6A]",
     box: "border-[#4C9A6A]/25 bg-[#4C9A6A]/8",
   },
 };
-
-const dimList = [
-  { key: "urgencia", label: "Urgência financeira" },
-  { key: "vulnerabilidade", label: "Vulnerabilidade" },
-  { key: "bemestar", label: "Bem-estar financeiro" },
-] as const;
 
 interface Props {
   name: string;
@@ -49,7 +40,7 @@ export function DiagnosticoResult({
   onScheduleClick,
   onRestart,
 }: Props) {
-  const { tier, dimScores } = results;
+  const { tier } = results;
   const content = tierContent[tier];
   const theme = tierTheme[tier];
   const Icon = theme.icon;
@@ -77,27 +68,9 @@ export function DiagnosticoResult({
         </p>
       </div>
 
-      {/* Coluna 2 — dimensões + ação */}
+      {/* Coluna 2 — ação */}
       <div>
-        <div className="mt-8 lg:mt-0">
-          <h3 className="mb-4 text-base font-semibold">Seu diagnóstico por dimensão</h3>
-          {dimList.map((d) => {
-            const pct = Math.round((dimScores[d.key] / DIM_MAX[d.key]) * 100);
-            return (
-              <div key={d.key} className="mb-3.5">
-                <div className="mb-1.5 flex justify-between text-sm text-muted-foreground">
-                  <span>{d.label}</span>
-                  <span>{pct}%</span>
-                </div>
-                <div className="h-2 overflow-hidden rounded-full bg-muted">
-                  <div className={`h-full rounded-full ${theme.bar}`} style={{ width: `${pct}%` }} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className={`mt-7 rounded-2xl border p-5 sm:p-6 ${theme.box}`}>
+        <div className={`mt-8 rounded-2xl border p-5 sm:p-6 lg:mt-0 ${theme.box}`}>
           <p className="mb-4 text-sm leading-relaxed">{content.cta}</p>
           <Button
             onClick={onScheduleClick}
