@@ -25,7 +25,6 @@ const DiagnosticoTeaser = () => {
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-4xl rounded-3xl border border-border/70 bg-card/90 p-8 text-center shadow-card backdrop-blur-sm md:p-12">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-accent shadow-sm">
-            <Stethoscope className="h-4 w-4" />
             Diagnóstico de Saúde Financeira
           </div>
 
@@ -36,7 +35,7 @@ const DiagnosticoTeaser = () => {
 
           <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Responda perguntas rápidas e receba uma análise clara dos 5 pilares
-            das suas finanças — em menos de 3 minutos, gratuito.
+            das suas finanças.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-2.5">
@@ -59,9 +58,6 @@ const DiagnosticoTeaser = () => {
               Fazer diagnóstico gratuito
               <ArrowRight className="h-5 w-5" />
             </Link>
-            <p className="mt-4 text-xs text-muted-foreground">
-              ⏱️ 3 minutos · 🔒 seus dados protegidos · sem compromisso
-            </p>
           </div>
         </div>
       </div>
