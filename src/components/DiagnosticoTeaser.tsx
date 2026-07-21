@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ClipboardList,
   PiggyBank,
-  Stethoscope,
   Target,
   TrendingUp,
   Wallet,
