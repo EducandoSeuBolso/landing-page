@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Stethoscope } from "lucide-react";
+import { DIAGNOSTICO_PATH } from "@/config/contact";
 
 // CTA fixo no rodapé mobile da home; some quando a CTASection (#contato)
 // está visível para não duplicar chamadas na mesma viewport.
@@ -23,11 +24,11 @@ export default function MobileCtaBar() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 p-3 md:hidden">
       <Link
-        to="/diagnostico"
+        to={DIAGNOSTICO_PATH}
         className="gradient-bg-blue-orange pointer-events-auto flex h-12 w-full items-center justify-center gap-2 rounded-xl font-semibold text-white shadow-xl"
       >
         <Stethoscope className="h-4 w-4" />
-        Fazer diagnóstico gratuito
+        Fazer Diagnóstico Gratuito
       </Link>
     </div>
   );

@@ -1,4 +1,6 @@
 import { Wallet, PiggyBank, TrendingUp, LineChart, Users, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+import { DIAGNOSTICO_PATH } from "@/config/contact";
 
 const services = [
   {
@@ -117,15 +119,31 @@ const ServicesSection = () => {
                 {service.description}
               </p>
 
-              {/* Hover cue — Gestalt common fate: icon appears on hover together */}
-              {!service.accent && (
-                <div className="mt-6 flex items-center gap-1.5 text-primary text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200 -translate-x-1 group-hover:translate-x-0">
-                  <span>Saiba mais</span>
-                  <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              )}
+              {/* CTA real apontando para /diagnostico (estende clique para o card inteiro via after:inset-0) */}
+              <Link
+                to={DIAGNOSTICO_PATH}
+                className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 after:absolute after:inset-0 after:rounded-3xl ${
+                  service.accent
+                    ? "text-white/95 hover:text-white"
+                    : "text-primary hover:text-primary/80"
+                }`}
+              >
+                <span>Saiba mais</span>
+                <svg
+                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
             </div>
           ))}
         </div>

@@ -1,6 +1,11 @@
-import { CheckCircle2, Award, MessageCircle, Calendar, Star, Sparkle } from "lucide-react";
+import { CheckCircle2, Award, MessageCircle, ArrowRight, Star, Sparkle } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import bolsitoLogo from "@/assets/bolsito.png";
+import { DIAGNOSTICO_PATH, getWhatsAppUrl } from "@/config/contact";
+
+const ABOUT_WHATSAPP_MESSAGE =
+  "Olá! Conheci a metodologia do Educando Seu Bolso e gostaria de falar com um especialista.";
 
 const benefits = [
   "Metodologia desenvolvida por profissionais da área",
@@ -58,14 +63,10 @@ const AboutSection = () => {
                 asChild
                 className="gradient-bg-blue-orange rounded-xl px-7 h-12 font-semibold text-white shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 border-0"
               >
-                <a
-                  href="https://minhaagendavirtual.com.br/educandoseubolso"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Calendar className="mr-2 w-4 h-4" />
-                  Agendar Consultoria
-                </a>
+                <Link to={DIAGNOSTICO_PATH}>
+                  Fazer Diagnóstico Gratuito
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
               </Button>
 
               <Button
@@ -74,9 +75,13 @@ const AboutSection = () => {
                 asChild
                 className="rounded-xl px-7 h-12 font-semibold border-2 border-border hover:bg-card hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300"
               >
-                <a href="http://wa.me/5531999189537" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={getWhatsAppUrl(ABOUT_WHATSAPP_MESSAGE)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MessageCircle className="mr-2 w-4 h-4 text-accent" />
-                  Falar no WhatsApp
+                  Falar com Especialista no WhatsApp
                 </a>
               </Button>
             </div>

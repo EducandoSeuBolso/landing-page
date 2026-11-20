@@ -11,21 +11,43 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { getWhatsAppUrl } from "@/config/contact";
 import { tierContent, type Tier } from "./diagnostico-data";
-
-const WHATSAPP_NUMBER = "5531999189537";
 
 function buildWhatsappUrl(name: string, tier: Tier): string {
   const zone = tierContent[tier].zoneWord;
   const greeting = name ? `Olá, meu nome é ${name}. ` : "Olá! ";
-  const msg = `${greeting}Acabei de fazer o diagnóstico de saúde financeira e fiquei na zona de ${zone}. Gostaria de agendar minha consultoria.`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  const msg = `${greeting}Acabei de fazer o diagnóstico de saúde financeira e fiquei na zona de ${zone}. Gostaria de receber minha análise e falar com um especialista.`;
+  return getWhatsAppUrl(msg);
+}
+
+function formatBrazilPhone(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length === 0) return "";
+  if (digits.length <= 2) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  }
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function redirectToWhatsApp(waWindow: Window | null, url: string) {
+  if (waWindow) {
+    waWindow.location.href = url;
+  } else {
+    window.location.href = url;
+  }
 }
 
 const schema = z.object({
   name: z.string().min(1, "Informe seu nome"),
   email: z.string().email("E-mail inválido"),
-  phone: z.string().min(8, "Informe um WhatsApp válido"),
+  phone: z
+    .string()
+    .refine((v) => v.replace(/\D/g, "").length >= 10, {
+      message: "Informe um WhatsApp válido com DDD",
+    }),
   consent: z.boolean().refine((v) => v === true, {
     message: "É necessário aceitar para continuar",
   }),
@@ -57,6 +79,7 @@ export function DiagnosticoLeadForm({
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -70,9 +93,20 @@ export function DiagnosticoLeadForm({
     if (open) reset({ name: defaultName, email: "", phone: "", consent: false });
   }, [open, defaultName, reset]);
 
+  const phoneRegister = register("phone");
+
   async function submit(values: FormValues) {
+    const url = buildWhatsappUrl(values.name, tier);
+    // Abre a aba sincronamente durante o gesto do usuário para evitar bloqueio
+    // de popup no iOS/Safari antes do await da API.
+    const waWindow = window.open("", "_blank");
+    if (waWindow) {
+      waWindow.opener = null;
+    }
+
     await onSubmitLead(values);
-    window.open(buildWhatsappUrl(values.name, tier), "_blank", "noopener");
+
+    redirectToWhatsApp(waWindow, url);
     onOpenChange(false);
   }
 
@@ -80,7 +114,7 @@ export function DiagnosticoLeadForm({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[85dvh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Agende sua consultoria</DialogTitle>
+          <DialogTitle>Receber análise no WhatsApp</DialogTitle>
           <DialogDescription>
             Deixe seu contato e você será direcionado ao WhatsApp para falar com
             nossa equipe.
@@ -101,7 +135,18 @@ export function DiagnosticoLeadForm({
             )}
           </div>
           <div>
-            <Input placeholder="WhatsApp (com DDD)" {...register("phone")} />
+            <Input
+              type="tel"
+              inputMode="tel"
+              maxLength={15}
+              placeholder="WhatsApp (XX) XXXXX-XXXX"
+              {...phoneRegister}
+              onChange={(e) => {
+                const formatted = formatBrazilPhone(e.target.value);
+                e.target.value = formatted;
+                setValue("phone", formatted, { shouldValidate: Boolean(errors.phone) });
+              }}
+            />
             {errors.phone && (
               <p className="mt-1 text-xs text-destructive">{errors.phone.message}</p>
             )}

@@ -1,8 +1,19 @@
 import { ExternalLink, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import bolsitoLogo from "@/assets/bolsito.png";
+import {
+  DIAGNOSTICO_PATH,
+  PRIVACY_POLICY_URL,
+  WHATSAPP_DISPLAY,
+  getWhatsAppUrl,
+} from "@/config/contact";
+
+const FOOTER_WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site da consultoria Educando Seu Bolso e gostaria de falar com um especialista.";
 
 const Footer = () => {
+  const whatsappUrl = getWhatsAppUrl(FOOTER_WHATSAPP_MESSAGE);
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
@@ -18,13 +29,13 @@ const Footer = () => {
               Educação financeira acessível e de qualidade para todos os brasileiros.
             </p>
             <a
-              href="https://wa.me/5531999189537"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
               <Phone className="h-3 w-3 shrink-0" />
-              (31) 99918-9537
+              {WHATSAPP_DISPLAY}
             </a>
             <a
               href="https://www.google.com/maps/search/?api=1&query=Educando+Seu+Bolso+Alameda+das+Falcatas+922+São+Luiz+Belo+Horizonte+MG"
@@ -62,7 +73,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Empresa</h4>
             <ul className="flex flex-col gap-2">
               <li>
-                <Link to="/diagnostico" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                <Link to={DIAGNOSTICO_PATH} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                   Diagnóstico financeiro
                 </Link>
               </li>
@@ -73,12 +84,12 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://minhaagendavirtual.com.br/educandoseubolso"
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
                 >
-                  Consultoria
+                  Falar com Especialista
                   <ExternalLink className="h-2.5 w-2.5" />
                 </a>
               </li>
@@ -95,7 +106,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Conecte-se</h4>
             <ul className="flex flex-col gap-2">
               {[
-                { label: "WhatsApp",  href: "https://wa.me/5531999189537" },
+                { label: "WhatsApp",  href: whatsappUrl },
                 { label: "Instagram", href: "https://www.instagram.com/educandoseubolso/" },
                 { label: "YouTube",   href: "https://www.youtube.com/educandoseubolso" },
                 { label: "Facebook",  href: "https://www.facebook.com/people/Blog-Educando-Seu-Bolso/61554308285348/" },
@@ -126,7 +137,12 @@ const Footer = () => {
             . Todos os direitos reservados.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href={PRIVACY_POLICY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
               Privacidade
             </a>
             <Link to="/#sobre" className="text-xs text-muted-foreground hover:text-foreground transition-colors">

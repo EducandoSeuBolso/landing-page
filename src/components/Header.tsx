@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle, Stethoscope } from "lucide-react";
+import { Menu, X, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
 import bolsitoLogo from "@/assets/bolsito.png";
+import { DIAGNOSTICO_PATH } from "@/config/contact";
 
 // Âncoras absolutas (/#secao) funcionam de qualquer rota via ScrollToHash.
 const navLinks = [
   { label: "Início",      to: "/#inicio" },
   { label: "Serviços",    to: "/#servicos" },
   { label: "Sobre",       to: "/#sobre" },
-  { label: "Diagnóstico", to: "/diagnostico", highlight: true },
+  { label: "Diagnóstico", to: DIAGNOSTICO_PATH, highlight: true },
   { label: "Contato",     to: "/#contato" },
 ];
 
@@ -64,15 +65,13 @@ const Header = () => {
 
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-2 shrink-0">
-            <a
-              href="https://minhaagendavirtual.com.br/educandoseubolso"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gradient-bg-blue-orange hidden md:flex items-center gap-1.5 px-4 py-2 text-base rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+            <Link
+              to={DIAGNOSTICO_PATH}
+              className="gradient-bg-blue-orange hidden md:flex items-center gap-1.5 px-4 py-2 text-sm lg:text-base whitespace-nowrap rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
             >
-              <MessageCircle className="h-4 w-4" />
-              Agendar Consulta
-            </a>
+              <Stethoscope className="h-4 w-4" />
+              Fazer Diagnóstico Gratuito
+            </Link>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -112,15 +111,14 @@ const Header = () => {
                 </Link>
               ),
             )}
-            <a
-              href="https://minhaagendavirtual.com.br/educandoseubolso"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to={DIAGNOSTICO_PATH}
+              onClick={() => setMobileOpen(false)}
               className="gradient-bg-blue-orange mt-1 px-3 py-3 text-base rounded-lg font-semibold text-white flex items-center gap-2"
             >
-              <MessageCircle className="h-4 w-4" />
-              Agendar Consulta
-            </a>
+              <Stethoscope className="h-4 w-4" />
+              Fazer Diagnóstico Gratuito
+            </Link>
           </div>
         </div>
       )}

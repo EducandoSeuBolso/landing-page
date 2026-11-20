@@ -7,6 +7,7 @@ import {
   TrendingUp,
   Wallet,
 } from "lucide-react";
+import { DIAGNOSTICO_PATH } from "@/config/contact";
 
 const pillars = [
   { icon: ClipboardList, label: "Organização Financeira" },
@@ -51,10 +52,10 @@ const DiagnosticoTeaser = () => {
 
           <div className="mt-9">
             <Link
-              to="/diagnostico"
+              to={DIAGNOSTICO_PATH}
               className="gradient-bg-blue-orange inline-flex h-14 items-center justify-center gap-2 rounded-xl px-8 text-base font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
-              Fazer diagnóstico gratuito
+              Fazer Diagnóstico Gratuito
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

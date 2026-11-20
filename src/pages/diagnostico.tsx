@@ -76,11 +76,11 @@ export default function Diagnostico() {
         {/* ── Marketing chrome — matches HeroSection / bolsito-frontend ── */}
         <div className="pointer-events-none absolute inset-0 mesh-gradient" />
         <div
-          className="pointer-events-none absolute left-1/4 top-0 h-[420px] w-[520px] -translate-x-1/2 rounded-full opacity-50 blur-[140px]"
+          className="pointer-events-none hidden md:block absolute left-1/4 top-0 h-[420px] w-[520px] -translate-x-1/2 rounded-full opacity-50 blur-[110px]"
           style={{ background: "rgba(14,135,198,0.20)" }}
         />
         <div
-          className="pointer-events-none absolute bottom-10 right-1/4 h-[360px] w-[440px] rounded-full opacity-50 blur-[130px]"
+          className="pointer-events-none hidden md:block absolute bottom-10 right-1/4 h-[360px] w-[440px] rounded-full opacity-50 blur-[100px]"
           style={{ background: "rgba(255,138,0,0.18)" }}
         />
 

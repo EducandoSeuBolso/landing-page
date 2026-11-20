@@ -76,7 +76,7 @@ export function DiagnosticoResult({
             onClick={onScheduleClick}
             className="gradient-bg-blue-orange h-12 w-full rounded-xl border-0 px-6 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
           >
-            Agendar minha consultoria
+            Receber Análise e Falar no WhatsApp
           </Button>
         </div>
 
